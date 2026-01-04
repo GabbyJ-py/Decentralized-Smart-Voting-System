@@ -15,3 +15,5 @@ uploads/
 .DS_Store
 Thumbs.db
 ngrok.exe
+
+*.csv

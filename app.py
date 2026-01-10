@@ -5,6 +5,9 @@ import os
 from dotenv import load_dotenv
 import uuid
 from werkzeug.utils import secure_filename
+import random
+import string
+
 
 load_dotenv()
 
@@ -40,6 +43,16 @@ def get_db_connection():
     except Error as e:
         print("Database connection error:", e)
         return None
+    
+def generate_voter_id(cursor):
+    while True:
+        voter_id = "VOTE" + ''.join(random.choices(string.digits, k=6))
+
+        cursor.execute("SELECT COUNT(*) FROM users WHERE voter_id = %s", (voter_id,))
+        (count,) = cursor.fetchone()
+
+        if count == 0:
+            return voter_id
 
 # =========================
 # ROUTES
@@ -76,19 +89,22 @@ def register():
                 return "Database connection failed"
 
             cursor = connection.cursor()
+            voter_id = generate_voter_id(cursor)
+
 
             query = """
-                INSERT INTO users (name, age, gender,email, mobile, aadhaar, photo_path)
-                VALUES (%s, %s, %s, %s, %s, %s, %s)
+                INSERT INTO users (name, age, gender,email, mobile, aadhaar, photo_path, voter_id)
+                VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
             """
 
-            cursor.execute(query, (name, age, gender, email, mobile, aadhaar, filename))
+            cursor.execute(query, (name, age, gender, email, mobile, aadhaar, filename, voter_id))
             connection.commit()
 
             cursor.close()
             connection.close()
 
-            return redirect(url_for('success'))
+            return redirect(url_for('success', voter_id=voter_id))
+
 
         except Exception as e:
             print("Error:", e)
@@ -98,7 +114,9 @@ def register():
 
 @app.route('/success')
 def success():
-    return "Registration successful!"
+    voter_id = request.args.get("voter_id")
+    return f"Registration successful! \n Your Voter ID is {voter_id} (for demonstration purposes only)."
+
 
 # =========================
 # MAIN

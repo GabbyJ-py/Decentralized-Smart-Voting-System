@@ -1,0 +1,139 @@
+# ===================================
+# NODE / FRONTEND
+# ===================================
+
+# Dependencies
+node_modules/
+package-lock.json
+
+# Build outputs
+dist/
+dist-ssr/
+build/
+*.local
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# ===================================
+# PYTHON / BACKEND
+# ===================================
+
+# Virtual Environment
+backend/venv/
+backend/env/
+venv/
+env/
+ENV/
+.venv/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Distribution / packaging
+backend/dist/
+backend/build/
+*.egg-info/
+.eggs/
+
+# ===================================
+# ENVIRONMENT & SECRETS
+# ===================================
+
+# Environment variables (CRITICAL - contains DB passwords, API keys)
+.env
+.env.local
+.env.*.local
+backend/.env
+backend/.env.local
+
+# ===================================
+# DATABASE
+# ===================================
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# ===================================
+# UPLOADED FILES (User Data)
+# ===================================
+
+# Voter photos and uploads (CRITICAL - contains biometric data)
+backend/uploads/
+uploads/
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.bmp
+
+# Temporary files from face recognition
+temp_*.jpg
+temp_*.jpeg
+temp_liveness_*.jpg
+
+# ===================================
+# BLOCKCHAIN
+# ===================================
+
+# Ganache/Truffle
+.secret
+truffle-config.js.backup
+
+# ===================================
+# EDITOR & OS
+# ===================================
+
+# VS Code
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+
+# JetBrains IDEs
+.idea/
+*.iml
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+Desktop.ini
+*.lnk
+
+# Linux
+*~
+
+# ===================================
+# MISC
+# ===================================
+
+# Testing
+coverage/
+.nyc_output/
+*.cover
+.coverage
+
+# Misc
+*.swp
+*.swo
+*.swn
+*.bak
+*.tmp
+*.temp

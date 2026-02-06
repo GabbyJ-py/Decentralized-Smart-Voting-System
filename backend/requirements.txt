@@ -1,0 +1,22 @@
+# Flask Web Framework
+flask==3.0.0
+flask-cors==4.0.0
+werkzeug==3.0.1
+
+# Database
+mysql-connector-python==8.2.0
+
+# Blockchain
+web3==6.11.3
+
+# AI/ML - Face Recognition
+deepface==0.0.79
+opencv-python==4.8.1.78
+numpy==1.24.3
+tf-keras==2.16.0
+
+# Utilities
+python-dotenv==1.0.0
+
+# Optional - Smart Contract Compilation (if needed)
+py-solc-x==2.0.2
